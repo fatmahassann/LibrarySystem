@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using LibrarySystem.Application.Behaviors;
+using LibrarySystem.Application.Common.Interfaces;
 using LibrarySystem.Infrastructure.Data;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -20,6 +21,8 @@ builder.Services.AddValidatorsFromAssembly(typeof(LibrarySystem.Application.IAss
 
 //مع كل requet بينطلب اعمل object جديد 
 builder.Services.AddTransient(typeof(IPipelineBehavior<,>) , typeof(ValidationBehavior<,>));
+
+builder.Services.AddScoped<IApplicationDbContecxt, ApplicationDbContext>();
 
 // Add services to the container.
 
