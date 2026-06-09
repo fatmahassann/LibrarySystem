@@ -1,4 +1,5 @@
-﻿using LibrarySystem.Domain.Entities;
+﻿using LibrarySystem.Application.Common.Interfaces;
+using LibrarySystem.Domain.Entities;
 using LibrarySystem.Infrastructure.Data.Configurations;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 namespace LibrarySystem.Infrastructure.Data
 {
     public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options )
-    : DbContext(options)
+    : DbContext(options) , IAppDbContecxt
     {
         public DbSet<Book> books => Set<Book>();
 
