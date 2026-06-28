@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using LibrarySystem.API.Exceptions;
 using LibrarySystem.Application.Behaviors;
 using LibrarySystem.Application.Common.Interfaces;
 using LibrarySystem.Infrastructure.Data;
@@ -8,8 +9,11 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<ApplicationDbContext>(builder => builder.UseSqlServer("@\"Server=.\\SQLEXPRESS;Database=Products;Trusted_Connection=True;TrustServerCertificate=True\""));
+builder.Services.AddProblemDetails();
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 
+
+builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer("Server=.\\SQLEXPRESS;Database=LibrarySystem;Trusted_Connection=True;TrustServerCertificate=True"));
 //mediatR Regester
 builder.Services.AddMediatR(options =>
 {
@@ -22,20 +26,25 @@ builder.Services.AddValidatorsFromAssembly(typeof(LibrarySystem.Application.IAss
 //مع كل requet بينطلب اعمل object جديد 
 builder.Services.AddTransient(typeof(IPipelineBehavior<,>) , typeof(ValidationBehavior<,>));
 
-builder.Services.AddScoped<IApplicationDbContecxt, ApplicationDbContext>();
+builder.Services.AddScoped<IApplicationDbContext>(provider =>
+    provider.GetRequiredService<ApplicationDbContext>());
+//builder.Services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
 
 // Add services to the container.
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+app.UseExceptionHandler();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();

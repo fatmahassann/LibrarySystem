@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{827E0CD3-B72D-47B6-A68D-7590B98EB39B}"
+	ProjectSection(SolutionItems) = preProject
+		requests.http = requests.http
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibrarySystem.Domain", "src\LibrarySystem.Domain\LibrarySystem.Domain.csproj", "{729C9519-8738-4658-98F4-0F4037FF450C}"
 EndProject
@@ -80,5 +83,8 @@ Global
 		{7693756A-E41A-49AE-9E32-0E7DB14D25D0} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
 		{817E86EB-04F6-41A9-9976-6E8F450FE4D8} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
 		{D1E73B8A-6CD4-4C6A-A3E2-445AEAB31934} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {51F52FD4-E14C-447F-9462-ED1FCF5A4FB4}
 	EndGlobalSection
 EndGlobal

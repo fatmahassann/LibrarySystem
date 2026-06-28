@@ -11,9 +11,9 @@ using System.Threading.Tasks;
 namespace LibrarySystem.Infrastructure.Data
 {
     public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options )
-    : DbContext(options) , IAppDbContecxt
+    : DbContext(options) , IApplicationDbContext
     {
-        public DbSet<Book> books => Set<Book>();
+        public DbSet<Book> Books => Set<Book>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

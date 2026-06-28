@@ -1,4 +1,6 @@
-﻿using LibrarySystem.Application.Common.Interfaces;
+﻿using LibrarySystem.Application.Common.Exceptions;
+using LibrarySystem.Application.Common.Interfaces;
+using LibrarySystem.Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -9,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace LibrarySystem.Application.UseCases.Books.Commands.DeleteBook
 {
-    public sealed class DeleteBookCommandHndler(IApplicationDbContecxt context) : IRequestHandler<DeleteBookCommand>
+    public sealed class DeleteBookCommandHndler(IApplicationDbContext context) : IRequestHandler<DeleteBookCommand>
     {
         public async Task Handle(DeleteBookCommand request, CancellationToken cancellationToken)
         {
@@ -17,7 +19,7 @@ namespace LibrarySystem.Application.UseCases.Books.Commands.DeleteBook
 
             if (book is null)
             {
-                throw new KeyNotFoundException($"Book With ID '{request.Id}' not found");
+                throw new NotFoundException(nameof(Book), request.Id);
 
             }
 

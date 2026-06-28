@@ -1,4 +1,6 @@
-﻿using LibrarySystem.Application.Common.Interfaces;
+﻿using LibrarySystem.Application.Common.Exceptions;
+using LibrarySystem.Application.Common.Interfaces;
+using LibrarySystem.Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -9,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace LibrarySystem.Application.UseCases.Books.Commands.UpdateBook
 {
-    public sealed class UpdateBookCommandHndler(IApplicationDbContecxt context) : IRequestHandler<UpdateBookCommand>
+    public sealed class UpdateBookCommandHndler(IApplicationDbContext context) : IRequestHandler<UpdateBookCommand>
     {
         public async Task Handle(UpdateBookCommand request, CancellationToken cancellationToken)
         {
@@ -17,7 +19,7 @@ namespace LibrarySystem.Application.UseCases.Books.Commands.UpdateBook
 
             if (book is null)
             {
-                throw new KeyNotFoundException($"Book With ID '{request.Id}' not found");
+                throw new NotFoundException(nameof(Book) , request.Id);
             }
             book.Update(
             request.Title,
@@ -26,6 +28,9 @@ namespace LibrarySystem.Application.UseCases.Books.Commands.UpdateBook
             request.Price,
             request.PublishedYear
         );
+            //new
+            await context.SaveChangesAsync(cancellationToken);
+
 
         }
     }

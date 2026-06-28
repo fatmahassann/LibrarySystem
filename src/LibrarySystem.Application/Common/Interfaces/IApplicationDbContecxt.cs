@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 //abstraction for AppDbContext
 namespace LibrarySystem.Application.Common.Interfaces
 {
-    public interface IApplicationDbContecxt
+    public interface IApplicationDbContext
     {
         DbSet<Book> Books { get; }
 

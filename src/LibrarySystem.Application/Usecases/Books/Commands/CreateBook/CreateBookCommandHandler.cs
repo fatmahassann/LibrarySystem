@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace LibrarySystem.Application.UseCases.Books.Commands.CreateBook
 {
-    public sealed class CreateBookCommandHandler(IApplicationDbContecxt context) : IRequestHandler<CreateBookCommand, Guid>
+    public sealed class CreateBookCommandHandler(IApplicationDbContext context) : IRequestHandler<CreateBookCommand, Guid>
     {
         public async Task<Guid> Handle(CreateBookCommand request, CancellationToken cancellationToken)
         {

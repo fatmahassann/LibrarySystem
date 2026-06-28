@@ -1,0 +1,46 @@
+@baseUrl = https://localhost:7256
+
+@bookId = e4aaaae1-5249-4f84-9bb4-1f294c3af5a5
+
+
+###Get api/books
+GET {{baseUrl}}/api/books
+
+
+###Get by id  api/books/abc
+
+GET {{baseUrl}}/api/books/{{bookId}}
+
+###Post book  api/books
+
+Post {{baseUrl}}/api/books
+content-type : application/json
+{
+  "title": "Clean Architecture222",
+  "author": "Robert Martin222",
+  "isbn": "9780134494166222",
+  "genre": "Software Engineering222",
+  "price": 50222,
+  "publishedYear": 2017
+}
+
+### Update book
+PUT {{baseUrl}}/api/books/{{bookId}}
+Content-Type: application/json
+
+{
+  "title": "Clean Architecture Updated",
+  "author": "Robert Martin",
+  "genre": "Programming",
+  "price": 60,
+  "publishedYear": 2024
+}
+
+### Delete book
+DELETE {{baseUrl}}/api/books/{{bookId}}
+
+
+
+
+
+
