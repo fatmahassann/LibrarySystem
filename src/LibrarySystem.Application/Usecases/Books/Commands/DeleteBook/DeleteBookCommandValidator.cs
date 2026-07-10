@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LibrarySystem.Application.UseCases.Books.Commands.DeleteBook
 {
-    internal class DeleteBookCommandValidator : AbstractValidator<DeleteBookCommand>
+    public class DeleteBookCommandValidator : AbstractValidator<DeleteBookCommand>
     {
         public DeleteBookCommandValidator()
         {
