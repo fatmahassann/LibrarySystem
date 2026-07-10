@@ -14,6 +14,7 @@ namespace LibrarySystem.Infrastructure.Data
     : DbContext(options) , IApplicationDbContext
     {
         public DbSet<Book> Books => Set<Book>();
+        public DbSet<Member> Members => Set<Member>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

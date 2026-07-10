@@ -8,6 +8,13 @@ using System.Threading.Tasks;
 
 namespace LibrarySystem.Application.Usecases.Members.Queries.GetAllMembers
 {
-    public sealed record GetMemberByIdQuery : IRequest<List<Member>>;
+    public sealed record GetMemberByIdQuery : IRequest<List<Member>>
+    {
+        private Guid memberId;
 
+        public GetMemberByIdQuery(Guid memberId)
+        {
+            this.memberId = memberId;
+        }
+    }
 }

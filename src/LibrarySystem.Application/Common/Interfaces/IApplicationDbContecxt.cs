@@ -12,6 +12,7 @@ namespace LibrarySystem.Application.Common.Interfaces
     public interface IApplicationDbContext
     {
         DbSet<Book> Books { get; }
+        DbSet<Member> Members { get; }
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 
