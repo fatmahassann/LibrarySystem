@@ -1,5 +1,7 @@
-﻿using LibrarySystem.Application.Common.Interfaces;
+﻿using LibrarySystem.Application.Common.Exceptions;
+using LibrarySystem.Application.Common.Interfaces;
 using LibrarySystem.Application.Usecases.Members.Commands.CreateMember;
+using LibrarySystem.Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -16,9 +18,9 @@ namespace LibrarySystem.Application.Usecases.Members.Commands.UpdateMember
         {
             var member =await context.Members.FirstOrDefaultAsync(x => x.Id == request.id, cancellationToken);
 
-            if(member == null)
+            if(member is null)
             {
-                throw new KeyNotFoundException($"member with id '{request.id}' not found");
+                throw new NotFoundException(nameof(Member),request.id);
             }
             member.Update
              (

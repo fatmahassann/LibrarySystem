@@ -20,7 +20,7 @@ namespace LibrarySystem.Application.Usecases.Members.Commands.DeleteMember
 
             if (member == null)
             {
-                throw new KeyNotFoundException($"member with id '{request.id}' not found");
+                throw new NotFoundException(nameof(Member), request.id);
 
             }
 
