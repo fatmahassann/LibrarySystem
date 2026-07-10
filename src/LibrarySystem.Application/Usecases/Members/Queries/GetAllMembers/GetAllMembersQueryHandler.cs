@@ -14,7 +14,9 @@ namespace LibrarySystem.Application.Usecases.Members.Queries.GetAllMembers
     {
         public async Task<List<Member>> Handle(GetAllMembersQuery request, CancellationToken cancellationToken)
         {
-            return await context.Members.ToListAsync(cancellationToken);
+            //return await context.Members.ToListAsync(cancellationToken);
+            // to hide the deleted row
+            return await context.Members.Where(x => !x.IsDeleted).ToListAsync();
         }
     }
 

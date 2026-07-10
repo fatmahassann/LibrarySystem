@@ -3,6 +3,7 @@ using LibrarySystem.Application.Usecases.Members.Commands.CreateMember;
 using LibrarySystem.Application.Usecases.Members.Commands.DeleteMember;
 using LibrarySystem.Application.Usecases.Members.Commands.UpdateMember;
 using LibrarySystem.Application.Usecases.Members.Queries.GetAllMembers;
+using LibrarySystem.Application.Usecases.Members.Queries.GetMemberById;
 using LibrarySystem.Application.UseCases.Books.Queries.GetAllBooks;
 using MediatR;
 using Microsoft.AspNetCore.Http;

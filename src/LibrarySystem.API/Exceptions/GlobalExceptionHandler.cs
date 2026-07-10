@@ -7,7 +7,7 @@ namespace LibrarySystem.API.Exceptions
 {
     public class GlobalExceptionHandler(IProblemDetailsService problemDetailsService ) : IExceptionHandler
     {
-        public object StatusCode { get; private set; }
+        //public object StatusCode { get; private set; }
 
         public async ValueTask<bool> TryHandleAsync(HttpContext httpContext, Exception exception, CancellationToken cancellationToken)
         {
@@ -32,6 +32,14 @@ namespace LibrarySystem.API.Exceptions
                     Title = "Resource Not Found!",
                     Detail = exception.Message,
                     Status = StatusCodes.Status404NotFound
+                },
+
+
+                InvalidOperationException ex => new ProblemDetails
+                {
+                    Title = "Business Rule Violation",
+                    Detail = ex.Message,
+                    Status = StatusCodes.Status400BadRequest
                 },
 
                 //anything else 
