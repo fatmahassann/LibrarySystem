@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace LibrarySystem.Application.Usecases.Members.Queries.GetAllMembers
 {
-    public sealed class GetMemberByIdQueryHandler(IApplicationDbContext context) : IRequestHandler<GetMemberByIdQuery, List<Member>>
+    public sealed class GetAllMembersQueryHandler(IApplicationDbContext context) : IRequestHandler<GetAllMembersQuery, List<Member>>
     {
-        public async Task<List<Member>> Handle(GetMemberByIdQuery request, CancellationToken cancellationToken)
+        public async Task<List<Member>> Handle(GetAllMembersQuery request, CancellationToken cancellationToken)
         {
             return await context.Members.ToListAsync(cancellationToken);
         }

@@ -4,6 +4,7 @@
 # Build folders
 bin/
 obj/
+Temp/
 
 # User files
 *.user

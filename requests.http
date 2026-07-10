@@ -2,6 +2,8 @@
 
 @bookId = 5411c1af-0ac1-443e-ab1b-c21312258342
 
+@memberId = 
+
 
 ###Get api/books
 GET {{baseUrl}}/api/books
@@ -41,6 +43,37 @@ DELETE {{baseUrl}}/api/books/{{bookId}}
 
 
 
+### Create Member
+POST {{baseUrl}}/api/members
+Content-Type: application/json
 
+{
+  "fullName": "Fatma Hassan",
+  "email": "fatma@example.com",
+  "phone": "01012345678",
+  "address": "Ismailia"
+}
+
+### Get All Members
+GET {{baseUrl}}/api/members
+
+
+### Get Member By Id
+GET {{baseUrl}}/api/members/{{memberId}}
+
+
+### Update Member
+PUT {{baseUrl}}/api/members/{{memberId}}
+Content-Type: application/json
+
+{
+  "fullName": "Fatma Hassan Updated",
+  "email": "fatma.updated@example.com",
+  "phone": "01111111111",
+  "address": "Cairo"
+}
+
+### Delete Member
+DELETE {{baseUrl}}/api/members/{{memberId}}
 
 

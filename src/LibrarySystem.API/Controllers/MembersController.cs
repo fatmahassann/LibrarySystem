@@ -12,17 +12,17 @@ namespace LibrarySystem.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class MembersControllers(IMediator mediator) : ControllerBase
+    public class MembersController(IMediator mediator) : ControllerBase
     {
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var result = await mediator.Send(new GetAllBooksQuery());
+            var result = await mediator.Send(new GetAllMembersQuery());
             return Ok(result);
         }
 
 
-        [HttpGet("{memberId:guid}" , Name ="GetMemeberById")]
+        [HttpGet("{memberId:guid}" , Name = "GetMemberById")]
         public async Task<IActionResult> Get(Guid memberId)
         {
             var result = await mediator.Send(new GetMemberByIdQuery(memberId));
